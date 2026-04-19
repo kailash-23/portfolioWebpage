@@ -1,8 +1,22 @@
-function SectionTitle({ title }) {
+function SectionTitle({ title, showDecoration = false }) {
   return (
-    <h2 className="mb-6 font-heading text-2xl tracking-tight md:text-3xl">
-      {title}
-    </h2>
+    <div className="section-title-container">
+      {showDecoration && (
+        <div className="editorial-dot-line mb-6" aria-hidden="true">
+          <span className="dot" />
+          <span className="line" />
+          <span className="dot" />
+        </div>
+      )}
+      <h2 className="section-title">{title}</h2>
+      {showDecoration && (
+        <div className="editorial-dot-line mt-6" aria-hidden="true">
+          <span className="dot" />
+          <span className="line" />
+          <span className="dot" />
+        </div>
+      )}
+    </div>
   )
 }
 

@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import SectionTitle from './components/SectionTitle'
-import FlagshipProjectCard from './components/FlagshipProjectCard'
 import GridProjectCard from './components/GridProjectCard'
 import ProjectModal from './components/ProjectModal'
-import StatsCard from './components/StatsCard'
 import ResumeButton from './components/ResumeButton'
 
 function IconButton({ label, children, compact = false, ...props }) {
@@ -12,12 +10,14 @@ function IconButton({ label, children, compact = false, ...props }) {
     <a
       aria-label={label}
       title={label}
-      className={`inline-flex items-center justify-center rounded-full border border-(--line) bg-(--card) text-(--text-soft) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-white hover:shadow-lg ${
+      className={`group inline-flex items-center justify-center rounded-full border border-(--line) bg-(--card) text-(--text-soft) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-white hover:shadow-lg ${
         compact ? 'h-8 w-8' : 'h-11 w-11'
       }`}
       {...props}
     >
-      {children}
+      <span className="group-hover:text-white [&_svg]:transition-colors [&_svg]:duration-300 [&_svg]:stroke-current [&_svg]:fill-none">
+        {children}
+      </span>
     </a>
   )
 }
@@ -57,7 +57,7 @@ function LinkedinIcon() {
 
 function LeetcodeIcon() {
   return (
-    <span className="text-[11px] font-bold tracking-[0.06em]">LC</span>
+    <span className="text-[11px] font-bold tracking-[0.06em] transition-colors duration-300 group-hover:text-white">LC</span>
   )
 }
 
@@ -69,58 +69,62 @@ function MailIcon() {
     </svg>
   )
 }
-
-const flagshipProjects = [
+const showcaseProjects = [
   {
-    id: 'sign-language-glove',
-    title: 'Sign Language Glove',
+    id: 'sign-language-glove-showcase',
+    displayTitle: 'IGCS',
+    subtitle: 'Intelligent Gesture Communication System',
+    title: 'SIGN LANGUAGE GLOVE',
     category: 'IoT + ML + Accessibility',
-    role: 'Lead Builder · Embedded + ML',
-    timeline: '4 month build cycle',
-    impact: '90%+ gesture accuracy across 20+ signs',
-    description:
-      'Developed an assistive IoT glove that converts hand gestures into real-time speech using flex sensor arrays and a custom machine learning model. Achieved over 90% accuracy across 20+ gestures.',
-    keyHighlights: [
-      'National Finalist at FedEx Innovation Challenge, IIT Madras',
-      '90%+ accuracy for 20+ gesture recognition',
-      'Real-time speech synthesis from hand movements',
-      'Arduino firmware + ML model optimization',
-    ],
-    technologies: ['Arduino', 'Python', 'Machine Learning', 'IoT', 'Embedded Systems'],
+    date: '2024-04',
+    year: '04 / 2024',
+    tags: ['ARDUINO', 'MACHINE LEARNING', 'ASSISTIVE TECH'],
+    description: 'Real-time sign-to-speech glove with 90%+ gesture accuracy across 20+ signs.',
+    blurb: 'Real-time gesture-to-voice translation with high-accuracy recognition.',
+    technologies: ['Arduino', 'Python', 'Machine Learning', 'Embedded Systems'],
+    visual: 'signglove',
   },
   {
-    id: 'smart-home',
-    title: 'Smart Home System',
+    id: 'smart-home-showcase',
+    displayTitle: 'HABITAT',
+    subtitle: 'Home Automation & Behavior Integration Technology',
+    title: 'SMART HOME SYSTEM',
     category: 'Systems + Automation',
-    role: 'System Architect · Automation',
-    timeline: 'Always-on local deployment',
-    impact: '24/7 stability without cloud dependency',
-    description:
-      'Built a fully local smart home automation system using Raspberry Pi, replacing a legacy PC-based setup. Implemented offline voice assistant, NFC-based triggers, and MQTT-driven event automation, ensuring reliable 24/7 operation without cloud dependency.',
-    keyHighlights: [
-      'Fully offline and self-hosted architecture',
-      'MQTT-driven event automation and control',
-      'NFC-based smart triggers',
-      '24/7 reliable operation without cloud dependency',
-    ],
-    technologies: ['Python', 'MQTT', 'Linux', 'Home Assistant', 'Raspberry Pi', 'NFC'],
+    date: '2024-03',
+    year: '03 / 2024',
+    tags: ['RASPBERRY PI', 'MQTT', 'OFFLINE AUTOMATION'],
+    description: 'Fully offline local automation stack built for reliable 24/7 smart home control.',
+    blurb: 'Offline-first smart home orchestration for resilient 24/7 control.',
+    technologies: ['Python', 'MQTT', 'Linux', 'Home Assistant', 'Raspberry Pi'],
+    visual: 'smarthome',
   },
   {
-    id: 'forma-ai',
-    title: 'Forma – AI Fitness App',
+    id: 'forma-showcase',
+    displayTitle: 'FORMA',
+    subtitle: 'Fitness Optimization & Recommendation Model Assistant',
+    title: 'FORMA AI FITNESS APP',
     category: 'Mobile + AI',
-    role: 'Full Stack Developer · Mobile + Backend',
-    timeline: 'Cross-platform product iteration',
-    impact: 'Personalized AI workout recommendations',
-    description:
-      'Developed a cross-platform fitness application delivering AI-based personalized workout recommendations. Designed scalable backend using Supabase and Firebase with a modular UI system for consistent mobile experience.',
-    keyHighlights: [
-      'AI-powered personalized workout suggestions',
-      'Cross-platform mobile experience',
-      'Scalable backend infrastructure',
-      'Real-time user analytics',
-    ],
-    technologies: ['React Native', 'Supabase', 'Firebase', 'Node.js', 'Machine Learning'],
+    date: '2024-02',
+    year: '02 / 2024',
+    tags: ['REACT NATIVE', 'SUPABASE', 'PERSONALIZATION'],
+    description: 'Cross-platform fitness app delivering AI-based personalized workout recommendations.',
+    blurb: 'AI-guided fitness planning with adaptive recommendations.',
+    technologies: ['React Native', 'Supabase', 'Firebase', 'Node.js'],
+    visual: 'forma',
+  },
+  {
+    id: 'attendance-showcase',
+    displayTitle: 'AMS',
+    subtitle: 'Attendance Management Suite',
+    title: 'ATTENDANCE MANAGEMENT',
+    category: 'Full Stack Product',
+    date: '2024-01',
+    year: '01 / 2024',
+    tags: ['REACT', 'NODE.JS', 'POSTGRESQL'],
+    description: 'Role-based attendance and CRM platform with analytics and automated reporting.',
+    blurb: 'Role-based attendance, analytics, and streamlined reporting.',
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'JWT'],
+    visual: 'attendance',
   },
 ]
 
@@ -130,6 +134,7 @@ const allProjects = {
       id: 'attendance',
       title: 'Attendance Management System',
       category: 'Full Stack',
+      date: '2024-01',
       description:
         'A comprehensive attendance and CRM system with role-based access control, analytics dashboard, and automated reporting. Designed secure REST APIs with JWT authentication.',
       technologies: ['React', 'Node.js', 'PostgreSQL', 'JWT'],
@@ -138,6 +143,7 @@ const allProjects = {
       id: 'monopoly',
       title: 'Monopoly NetBanking System',
       category: 'Backend Logic',
+      date: '2023-11',
       description:
         'Banking simulation platform handling transactions, account logic, and user operations. Focused on backend flow design and transaction handling.',
       technologies: ['JavaScript', 'Node.js', 'PostgreSQL'],
@@ -146,6 +152,7 @@ const allProjects = {
       id: 'foodicious',
       title: 'Foodicious – Calorie Tracker',
       category: 'Hackathon',
+      date: '2023-09',
       description:
         'Calorie tracking application developed during KCG Hackathon enabling users to monitor daily nutrition intake and health metrics.',
       technologies: ['React', 'Firebase', 'JavaScript'],
@@ -154,6 +161,7 @@ const allProjects = {
       id: 'flashcards',
       title: 'Flashcards App',
       category: 'Learning Tool',
+      date: '2023-07',
       description: 'Lightweight flashcard-based learning system for efficient memory retention and quick revision.',
       technologies: ['React', 'Local Storage', 'CSS'],
     },
@@ -163,24 +171,25 @@ const allProjects = {
       id: 'erpnext-ai',
       title: 'ERPNext AI Chatbot',
       category: 'Enterprise Automation',
+      date: '2024-05',
       description:
         'Integrated an AI-powered chatbot within ERPNext to automate internal queries and improve operational efficiency.',
-      keyHighlights: ['Reduced support ticket volume by 30%', 'Multi-language support', 'Context-aware responses'],
       technologies: ['ERPNext', 'Python', 'AI/NLP'],
     },
     {
       id: 'n8n-automation',
       title: 'n8n Lead Generation Automation',
       category: 'Workflow Automation',
+      date: '2024-04',
       description:
         'Designed automation workflows for lead generation, scraping, and CRM integration, eliminating manual data collection processes.',
-      keyHighlights: ['40% reduction in manual operations', 'Scalable workflow design', 'Real-time data processing'],
       technologies: ['n8n', 'APIs', 'JavaScript', 'Data Integration'],
     },
     {
       id: 'esp-ambilight',
       title: 'ESP Ambilight System',
       category: 'Embedded Systems',
+      date: '2023-08',
       description:
         'Ambient lighting system using ESP microcontroller to synchronize lighting with screen output for immersive visuals.',
       technologies: ['ESP32', 'Arduino', 'C++', 'LED control'],
@@ -191,6 +200,7 @@ const allProjects = {
       id: 'ryze-website',
       title: 'RYZE Website',
       category: 'Company Website',
+      date: '2024-03',
       description:
         'Developed and deployed company website with focus on performance, responsiveness, and modern branding.',
       technologies: ['React', 'Tailwind CSS', 'Vercel'],
@@ -199,6 +209,7 @@ const allProjects = {
       id: 'aintrix-website',
       title: 'Aintrix Global Website',
       category: 'Corporate Website',
+      date: '2024-02',
       description: 'Built corporate website representing company services, branding, and product ecosystem.',
       technologies: ['React', 'Node.js', 'PostgreSQL'],
     },
@@ -206,6 +217,7 @@ const allProjects = {
       id: 'aint-branding',
       title: 'AINT Branding & Design',
       category: 'Product Branding',
+      date: '2023-10',
       description:
         'Worked on product branding, marketing assets, and visual design concepts for AINT startup.',
       technologies: ['Figma', 'Design Systems', 'Branding'],
@@ -216,11 +228,31 @@ const allProjects = {
       id: 'fedex-challenge',
       title: 'FedEx Innovation Challenge – IIT Madras',
       category: 'Hackathon & Recognition',
+      date: '2024-04',
       description:
         'National Finalist for Sign Language Glove project, competing among top engineering teams across India.',
       technologies: ['IoT', 'ML', 'System Design'],
     },
   ],
+}
+
+const showcaseProjectKeys = showcaseProjects.map((project) => project.title.toLowerCase())
+
+const archiveProjects = Object.values(allProjects)
+  .flat()
+  .filter((project) => {
+    const title = project.title.toLowerCase()
+    return !showcaseProjectKeys.some(
+      (featuredTitle) => featuredTitle.includes(title) || title.includes(featuredTitle),
+    )
+  })
+
+function formatProjectDate(dateValue) {
+  if (!dateValue) {
+    return 'N / A'
+  }
+  const [year, month] = dateValue.split('-')
+  return `${month} / ${year}`
 }
 
 const interests = [
@@ -333,56 +365,6 @@ const skills = [
   'ERPNext',
 ]
 
-const skillsByCategory = {
-  'Languages': ['Python', 'JavaScript', 'TypeScript', 'Java', 'C++'],
-  'Frontend': ['React', 'React Native', 'Tailwind CSS', 'Framer Motion', 'Next.js'],
-  'Backend': ['Node.js', 'Express', 'Django', 'FastAPI', 'REST APIs', 'GraphQL'],
-  'Databases': ['PostgreSQL', 'MongoDB', 'Firebase', 'Supabase', 'Redis'],
-  'Cloud & DevOps': ['AWS', 'GCP', 'Azure', 'Docker', 'Vercel', 'GitHub Actions'],
-  'Automation & AI': ['n8n', 'ERPNext', 'Python Scripting', 'Machine Learning', 'NLP'],
-  'IoT & Embedded': ['Arduino', 'ESP32', 'Raspberry Pi', 'MQTT', 'Embedded C'],
-  'Tools & Platforms': ['Git', 'Linux', 'Figma', 'Postman', 'VS Code', 'Jira'],
-}
-
-const statistics = [
-  {
-    id: 1,
-    value: '15+',
-    label: 'Projects Completed',
-    subtitle: 'From IoT to full-stack web apps',
-  },
-  {
-    id: 2,
-    value: '40+',
-    label: 'Users Served',
-    subtitle: 'Across production applications',
-  },
-  {
-    id: 3,
-    value: '3',
-    label: 'Years Experience',
-    subtitle: 'Building and shipping products',
-  },
-  {
-    id: 4,
-    value: '1',
-    label: 'National Finalist',
-    subtitle: 'FedEx Innovation Challenge 2024',
-  },
-  {
-    id: 5,
-    value: '90%+',
-    label: 'Accuracy Rate',
-    subtitle: 'Sign Language Gesture Recognition',
-  },
-  {
-    id: 6,
-    value: '10K+',
-    label: 'Daily Transactions',
-    subtitle: 'Handled by production systems',
-  },
-]
-
 const socialLinks = [
   {
     label: 'GitHub',
@@ -447,6 +429,22 @@ function App() {
     return () => observer.disconnect()
   }, [])
 
+  const isProjectsPage = window.location.pathname === '/projects'
+  const showcaseArchiveProjects = showcaseProjects.map((project) => ({
+    id: `featured-${project.id}`,
+    title: project.title,
+    category: project.category,
+    description: project.description,
+    technologies: project.technologies,
+    date: project.date,
+  }))
+
+  const mergedProjects = [...showcaseArchiveProjects, ...archiveProjects]
+  const uniqueProjects = Array.from(
+    new Map(mergedProjects.map((project) => [project.title.toLowerCase(), project])).values(),
+  )
+  const sortedProjects = uniqueProjects.sort((a, b) => (b.date || '').localeCompare(a.date || ''))
+
   useEffect(() => {
     const onScroll = () => {
       const currentY = window.scrollY
@@ -471,16 +469,56 @@ function App() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  if (isProjectsPage) {
+    return (
+      <div className="relative min-h-screen overflow-x-hidden bg-(--bg) text-(--text-primary)">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(24,28,34,0.12),transparent_42%),radial-gradient(circle_at_80%_0%,rgba(64,72,86,0.08),transparent_34%),linear-gradient(to_bottom,var(--bg),var(--bg))]" />
+        <main className="mx-auto flex w-full max-w-7xl flex-col px-4 pb-24 pt-12 md:px-6 lg:px-8 md:pt-16">
+          <section className="unified-section">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <h1 className="projects-editorial-title m-0!">ALL PROJECTS</h1>
+              <a
+                href="/"
+                className="rounded-full border border-(--line) bg-(--card) px-5 py-2 text-sm font-semibold text-(--text-primary) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-white"
+              >
+                Back to Home
+              </a>
+            </div>
+            <p className="mt-4 text-sm uppercase tracking-[0.08em] text-(--text-muted)">
+              Sorted by most recent first
+            </p>
+            <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {sortedProjects.map((project, index) => (
+                <div key={`${project.id}-${index}`} className="relative">
+                  <span className="absolute right-4 top-4 z-20 text-xs font-semibold tracking-[0.08em] text-(--text-muted)">
+                    {formatProjectDate(project.date)}
+                  </span>
+                  <GridProjectCard
+                    project={project}
+                    onClick={() => setSelectedProject(project)}
+                    index={index}
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        </main>
+
+        <ProjectModal project={selectedProject} isOpen={Boolean(selectedProject)} onClose={() => setSelectedProject(null)} />
+      </div>
+    )
+  }
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-(--bg) text-(--text-primary)">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(38,99,235,0.18),transparent_40%),radial-gradient(circle_at_80%_0%,rgba(14,116,144,0.1),transparent_30%),linear-gradient(to_bottom,var(--bg),var(--bg))]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(24,28,34,0.12),transparent_42%),radial-gradient(circle_at_80%_0%,rgba(64,72,86,0.08),transparent_34%),linear-gradient(to_bottom,var(--bg),var(--bg))]" />
 
       <header
-        className={`glass-header fixed inset-x-0 top-0 z-30 border-b border-(--line) transition-transform duration-300 ${
+        className={`glass-header hidden fixed inset-x-0 top-0 z-30 border-b border-(--line) transition-transform duration-300 md:block ${
           showNav ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-2 md:px-10">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 md:px-6 lg:px-8">
           <MotionDiv
             initial={false}
             animate={{ width: passedHero ? 270 : 24 }}
@@ -526,36 +564,39 @@ function App() {
         </div>
       </header>
 
-      <main className="mx-auto flex w-full max-w-6xl flex-col px-6 pb-24 pt-24 md:px-10 md:pt-28">
+      <main className="mx-auto flex w-full max-w-7xl flex-col px-3 pb-24 pt-10 md:px-5 lg:px-6 md:pt-28">
         <MotionSection
           ref={heroRef}
           id="hero"
           variants={sectionAnim}
           initial="hidden"
           animate="show"
-          className="border-b border-(--line) pb-20"
+          className="hero-editorial"
         >
-          <div>
-            <p className="mb-5 text-sm uppercase tracking-[0.2em] text-(--text-muted)">Software Engineer</p>
-            <h1 className="font-heading text-4xl leading-tight md:text-6xl">Kailash Senthil</h1>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-(--text-soft)">
-              Backend & automation focused engineer building scalable systems, AI-integrated workflows,
-              and practical applications that solve real operational problems.
-            </p>
-            <p className="mt-3 text-sm text-(--text-muted)">Based in Chennai, India</p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <a
-                href="mailto:kailash.s2376@gmail.com"
-                className="rounded-full border border-(--line) bg-(--card) px-5 py-2 text-sm font-semibold text-(--text-primary) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-white hover:shadow-lg"
-              >
-                Let us connect
-              </a>
-              <a
-                href="#flagship-projects"
-                className="rounded-full border border-(--line) bg-transparent px-5 py-2 text-sm font-semibold text-(--text-soft) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-(--text-white) hover:shadow-lg"
-              >
-                View projects
-              </a>
+          <div className="hero-grid hero-grid--single">
+            <div className="hero-content">
+              <h1 className="hero-title hero-name-animate">
+                <span className="hero-name-line">Kailash Senthil</span>
+              </h1>
+              <p className="hero-copy">
+                Building backend and automation systems with product-level reliability,
+                operational clarity, and measurable impact.
+              </p>
+              <p className="hero-location">Based in Chennai, India</p>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <a
+                  href="mailto:kailash.s2376@gmail.com"
+                  className="rounded-full border border-(--line) bg-(--card) px-5 py-2 text-sm font-semibold text-(--text-primary) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-white hover:shadow-lg"
+                >
+                  Let us connect
+                </a>
+                <a
+                  href="#all-projects"
+                  className="rounded-full border border-(--line) bg-transparent px-5 py-2 text-sm font-semibold text-(--text-soft) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-(--text-white) hover:shadow-lg"
+                >
+                  View projects
+                </a>
+              </div>
             </div>
           </div>
         </MotionSection>
@@ -566,9 +607,9 @@ function App() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
-          className="border-b border-(--line) py-16"
+          className="unified-section"
         >
-          <SectionTitle title="About" />
+          <SectionTitle title="About" showDecoration={false} />
           <p className="max-w-3xl text-base leading-relaxed text-(--text-soft) md:text-lg">
             Software Engineer specializing in backend development, automation systems, and scalable web
             applications. Experienced in building AI-integrated workflows, ERP systems, and IoT
@@ -582,125 +623,137 @@ function App() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="border-b border-(--line) py-16"
+          className="unified-section"
         >
-          <SectionTitle title="Journey Timeline" />
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="timeline-panel rounded-2xl border border-(--line) bg-(--card) p-6 shadow-(--shadow)">
-              <h3 className="font-heading text-xl">Education</h3>
-              <div className="mt-6 space-y-6 border-l border-(--line) pl-6">
+          <SectionTitle title="Journey Timeline" showDecoration={false} />
+          <div className="timeline-layout">
+            <div className="timeline-column">
+              <h3 className="timeline-column-title">Education</h3>
+              <div className="timeline-stack">
                 {timelineEducation.map((item) => (
-                  <div key={item.title} className="relative">
-                    <span className="absolute -left-8 top-1.5 h-2.5 w-2.5 rounded-full bg-(--accent)" />
-                    <p className="text-xs uppercase tracking-[0.14em] text-(--text-muted)">{item.period}</p>
-                    <p className="mt-1 font-semibold text-(--text-primary)">{item.title}</p>
-                    {item.institution && <p className="text-xs text-(--text-soft) italic">{item.institution}</p>}
-                    <p className="mt-1 text-sm leading-relaxed text-(--text-soft)">{item.description}</p>
+                  <article key={item.title} className="timeline-card">
+                    <p className="timeline-card-period">{item.period}</p>
+                    <p className="timeline-card-title">{item.title}</p>
+                    {item.institution && <p className="timeline-card-sub">{item.institution}</p>}
+                    <p className="timeline-card-copy">{item.description}</p>
                     {item.highlights && (
-                      <ul className="mt-2 space-y-1">
+                      <ul className="timeline-card-list">
                         {item.highlights.map((highlight, i) => (
-                          <li key={i} className="text-xs text-(--text-muted)">
-                            • {highlight}
-                          </li>
+                          <li key={i}>{highlight}</li>
                         ))}
                       </ul>
                     )}
-                  </div>
+                  </article>
                 ))}
               </div>
             </div>
 
-            <div className="timeline-panel rounded-2xl border border-(--line) bg-(--card) p-6 shadow-(--shadow)">
-              <h3 className="font-heading text-xl">Work Experience</h3>
-              <div className="mt-6 space-y-6 border-l border-(--line) pl-6">
+            <div className="timeline-column">
+              <h3 className="timeline-column-title">Work Experience</h3>
+              <div className="timeline-stack">
                 {timelineWork.map((item) => (
-                  <div key={item.company} className="relative">
-                    <span className="absolute -left-8 top-1.5 h-2.5 w-2.5 rounded-full bg-(--accent)" />
-                    <p className="text-xs uppercase tracking-[0.14em] text-(--text-muted)">{item.period}</p>
-                    <p className="mt-1 font-semibold text-(--text-primary)">
+                  <article key={item.company} className="timeline-card">
+                    <p className="timeline-card-period">{item.period}</p>
+                    <p className="timeline-card-title">
                       {item.company} · {item.role}
                     </p>
-                    {item.description && <p className="text-xs text-(--text-soft) italic">{item.description}</p>}
+                    {item.description && <p className="timeline-card-sub">{item.description}</p>}
                     {Array.isArray(item.points) ? (
-                      <ul className="mt-2 space-y-1">
+                      <ul className="timeline-card-list">
                         {item.points.map((point, i) => (
-                          <li key={i} className="text-xs text-(--text-soft)">
-                            • {point}
-                          </li>
+                          <li key={i}>{point}</li>
                         ))}
                       </ul>
                     ) : (
-                      <p className="mt-1 text-sm leading-relaxed text-(--text-soft)">{item.points}</p>
+                      <p className="timeline-card-copy">{item.points}</p>
                     )}
-                  </div>
+                  </article>
                 ))}
               </div>
             </div>
-          </div>
-        </MotionSection>
-
-        <MotionSection
-          id="statistics"
-          variants={sectionAnim}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          className="border-b border-(--line) py-16"
-        >
-          <SectionTitle title="By The Numbers" />
-          <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:gap-6">
-            {statistics.map((stat, index) => (
-              <StatsCard key={stat.id} stat={stat} index={index} />
-            ))}
-          </div>
-        </MotionSection>
-
-        <MotionSection
-          id="flagship-projects"
-          variants={sectionAnim}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          className="border-b border-(--line) py-16"
-        >
-          <SectionTitle title="Flagship Projects" />
-          <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
-            {flagshipProjects.map((project, index) => (
-              <FlagshipProjectCard
-                key={project.id}
-                project={project}
-                onClick={() => setSelectedProject(project)}
-                index={index}
-              />
-            ))}
           </div>
         </MotionSection>
 
         <MotionSection
           id="all-projects"
           variants={sectionAnim}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          className="border-b border-(--line) py-16"
+          initial="show"
+          animate="show"
+          className="unified-section"
         >
-          <SectionTitle title="More Projects" />
-          <div className="space-y-12">
-            {Object.entries(allProjects).map(([category, projects]) => (
-              <div key={category}>
-                <h3 className="font-heading mb-4 text-lg text-(--text-primary)">{category}</h3>
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                  {projects.map((project, index) => (
-                    <GridProjectCard
-                      key={project.id}
-                      project={project}
-                      onClick={() => setSelectedProject(project)}
-                      index={index}
-                    />
+          <div className="projects-editorial">
+            <h2 className="projects-editorial-title">PROJECTS</h2>
+
+            <div className="projects-lead-grid">
+              <div>
+                <p className="projects-lead-label">ENGINEER</p>
+                <p className="projects-lead-sub">selected systems & product work -</p>
+              </div>
+            </div>
+
+            <div className="projects-catalog-grid">
+              {showcaseProjects.map((project) => (
+                <article
+                  key={project.id}
+                  className="editorial-project-card"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setSelectedProject(project)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      setSelectedProject(project)
+                    }
+                  }}
+                >
+                  <div className={`editorial-project-visual visual-${project.visual}`} aria-hidden="true">
+                    <div className="editorial-mock-window" />
+                  </div>
+
+                  <div className="editorial-project-head">
+                    <h3>{project.displayTitle || project.title}</h3>
+                    <span>{project.year}</span>
+                  </div>
+
+                  {project.subtitle && (
+                    <p className="editorial-project-subtitle">{project.subtitle}</p>
+                  )}
+
+                  <div className="editorial-project-tags">
+                    {project.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+
+                  <p className="editorial-project-copy">{project.blurb || project.description} -</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-14">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <p className="projects-archive-label">PROJECT ARCHIVE</p>
+                <a
+                  href="/projects"
+                  aria-label="Open all projects"
+                  className="archive-arrow-link inline-flex h-8 w-8 items-center justify-center rounded-full border border-(--line) bg-(--card) text-sm font-semibold text-(--text-soft) transition-all duration-300 hover:border-(--accent) hover:text-(--text-primary)"
+                >
+                  ↗
+                </a>
+              </div>
+              <div className="projects-marquee mt-4">
+                <div className="projects-track">
+                  {[...archiveProjects, ...archiveProjects].map((project, index) => (
+                    <div key={`${project.id}-${index}`} className="projects-track-item">
+                      <GridProjectCard
+                        project={project}
+                        onClick={() => setSelectedProject(project)}
+                        index={index}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </MotionSection>
 
@@ -710,40 +763,18 @@ function App() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="border-b border-(--line) py-16"
+          className="unified-section"
         >
-          <SectionTitle title="Skills" />
-          <div className="space-y-8">
-            <div className="skills-marquee rounded-2xl border border-(--line) bg-(--card) py-4 shadow-(--shadow)">
-              <div className="skills-track">
-                {[...skills, ...skills].map((skill, index) => (
-                  <span
-                    key={`${skill}-${index}`}
-                    className="mx-2 inline-flex rounded-full border border-(--line) px-4 py-2 text-sm text-(--text-soft)"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              {Object.entries(skillsByCategory).map(([category, items]) => (
-                <div
-                  key={category}
-                  className="rounded-xl border border-(--line) bg-(--card) p-4"
+          <SectionTitle title="Skills" showDecoration={false} />
+          <div className="skills-marquee-container">
+            <div className="skills-track">
+              {[...skills, ...skills].map((skill, index) => (
+                <span
+                  key={`${skill}-${index}`}
+                  className="marquee-skill-tag"
                 >
-                  <h4 className="text-sm font-semibold text-(--accent) mb-3">{category}</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {items.map((skill) => (
-                      <span
-                        key={skill}
-                        className="rounded-full bg-(--bg) px-2.5 py-1 text-xs text-(--text-soft) border border-(--line)"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                  {skill}
+                </span>
               ))}
             </div>
           </div>
@@ -755,9 +786,9 @@ function App() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="py-16"
+          className="unified-section"
         >
-          <SectionTitle title="Contact" />
+          <SectionTitle title="Contact" showDecoration={false} />
           <p className="text-base text-(--text-soft) md:text-lg">
             Open to backend, automation, and platform engineering roles. Let's connect and build something great together.
           </p>
@@ -790,17 +821,17 @@ function App() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="py-16"
+          className="unified-section pb-0"
         >
-          <SectionTitle title="Interests & Hobbies" />
+          <SectionTitle title="Outside The Build" showDecoration={false} />
           <p className="text-base text-(--text-soft) md:text-lg">
-            I'm passionate about tech and design beyond just work:
+            Beyond shipping features, this is where I experiment, recharge, and stay creatively sharp:
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             {interests.map((interest) => (
               <span
                 key={interest}
-                className="rounded-full border border-(--line) px-4 py-2 text-sm text-(--text-soft)"
+                className="interest-pill"
               >
                 {interest}
               </span>
