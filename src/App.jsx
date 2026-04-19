@@ -69,11 +69,12 @@ function MailIcon() {
     </svg>
   )
 }
+
 const showcaseProjects = [
   {
     id: 'sign-language-glove-showcase',
     displayTitle: 'IGCS',
-    subtitle: 'Intelligent Gesture Communication System',
+    subtitle: 'Sign Language Glove',
     title: 'SIGN LANGUAGE GLOVE',
     category: 'IoT + ML + Accessibility',
     date: '2024-04',
@@ -83,48 +84,269 @@ const showcaseProjects = [
     blurb: 'Real-time gesture-to-voice translation with high-accuracy recognition.',
     technologies: ['Arduino', 'Python', 'Machine Learning', 'Embedded Systems'],
     visual: 'signglove',
+    detail: {
+      summary:
+        'IGCS is a centralized control platform designed to manage and monitor operational workflows across an organization, integrating attendance, workflows, and internal tools into a single command layer.',
+      images: ['/images/IGCS.jpeg'],
+      sections: [
+        {
+          title: 'Project Overview',
+          body:
+            'IGCS acts as a control layer that centralizes organizational operations, monitors subsystem activity, and provides a single place to observe logs, control access, and coordinate internal services.',
+        },
+        {
+          title: 'Objectives',
+          items: [
+            'Centralize organizational controls',
+            'Provide real-time monitoring',
+            'Improve operational efficiency',
+            'Enable modular system integration',
+          ],
+        },
+        {
+          title: 'Core Features',
+          items: [
+            'Central dashboard with analytics and logs',
+            'Role-based access control for secure usage',
+            'System monitoring with activity tracking',
+            'Integration with internal tools such as FORMA and Attendance',
+            'Logging and audit trails for traceability',
+          ],
+        },
+        {
+          title: 'Architecture',
+          items: [
+            'Frontend dashboard UI for centralized control',
+            'Backend API layer for routing and orchestration',
+            'Service modules for FORMA, Attendance, and other internal systems',
+            'Centralized database for shared data and logs',
+          ],
+        },
+        {
+          title: 'Use Case',
+          body:
+            'An admin monitors employee activity, tracks system-level logs, and controls access across modules from a single interface.',
+        },
+      ],
+    },
   },
   {
     id: 'smart-home-showcase',
     displayTitle: 'HABITAT',
-    subtitle: 'Home Automation & Behavior Integration Technology',
+    subtitle: 'Smart Home System',
     title: 'SMART HOME SYSTEM',
     category: 'Systems + Automation',
-    date: '2024-03',
-    year: '03 / 2024',
+    date: '2026-03',
+    year: '03 / 2026',
     tags: ['RASPBERRY PI', 'MQTT', 'OFFLINE AUTOMATION'],
     description: 'Fully offline local automation stack built for reliable 24/7 smart home control.',
     blurb: 'Offline-first smart home orchestration for resilient 24/7 control.',
     technologies: ['Python', 'MQTT', 'Linux', 'Home Assistant', 'Raspberry Pi'],
     visual: 'smarthome',
+    detail: {
+      summary:
+        'A self-hosted Raspberry Pi smart home automation system that integrates Home Assistant, voice commands, NFC triggers, and IoT devices to control home appliances locally with privacy, low latency, and full customization.',
+      images: ['/images/homeassistant.jpeg', '/images/smartHomeStructure.png', '/images/Raspberry%20Pi.png'],
+      sections: [
+        {
+          title: 'Project Overview',
+          body:
+            'Built a centralized smart home hub that removes cloud dependency and keeps automations inside the local network for faster, more reliable control.',
+        },
+        {
+          title: 'Objectives',
+          items: [
+            'Build a centralized smart home hub',
+            'Enable voice-based automation',
+            'Support NFC-based instant triggers',
+            'Keep device control local with low latency',
+            'Design the setup to stay modular and scalable',
+          ],
+        },
+        {
+          title: 'Core Architecture',
+          items: [
+            'Hardware: Raspberry Pi 4 Model B, relay module, NFC reader, NFC tags, power supply, and wiring',
+            'Software: Home Assistant, Raspberry Pi OS, MQTT, Node-RED, Python integrations, and voice assistant support',
+            'Optional distributed nodes: ESP8266 or ESP32 for extended device coverage',
+          ],
+        },
+        {
+          title: 'System Workflow',
+          items: [
+            'User input enters through voice, NFC tap, or mobile app',
+            'Home Assistant receives the request and evaluates automation rules',
+            'Commands are sent to relays and IoT devices through local integrations',
+            'Dashboard state updates immediately after the action completes',
+          ],
+        },
+        {
+          title: 'Key Features Implemented',
+          items: [
+            'Voice control through Google Assistant, Alexa, or offline STT engines',
+            'Real-time dashboard control for toggles, device status, and logs',
+            'NFC automations for bedside, door, and room-based triggers',
+            'Relay-based appliance switching for lights, fans, and other AC devices',
+            'Local and remote access options depending on environment setup',
+          ],
+        },
+        {
+          title: 'Technical Design',
+          items: [
+            'GPIO used for direct hardware control',
+            'MQTT used for device messaging when ESP nodes are present',
+            'REST APIs used for service and dashboard integration',
+            'Local-first security with authentication, optional SSL, and reverse proxy support',
+          ],
+        },
+        {
+          title: 'Challenges and Solutions',
+          items: [
+            'GPIO pin configuration and relay wiring were stabilized with tested libraries',
+            'NFC integration was handled through custom scripts and add-ons',
+            'Voice latency was reduced by shifting to local control where possible',
+            'Network reliability issues were minimized with local-first design',
+          ],
+        },
+        {
+          title: 'Outcomes',
+          items: [
+            'Prototype runs fully as a working smart home system',
+            'Manual switching reduced through automation and dashboard control',
+            'Response time improved with local processing',
+            'Architecture is ready for additional devices and automations',
+          ],
+        },
+        {
+          title: 'Future Enhancements',
+          items: [
+            'AI-based predictive automation',
+            'Face recognition entry system',
+            'Energy monitoring dashboard',
+            'Fully offline voice assistant with Whisper and a local LLM',
+          ],
+        },
+      ],
+    },
   },
   {
     id: 'forma-showcase',
     displayTitle: 'FORMA',
-    subtitle: 'Fitness Optimization & Recommendation Model Assistant',
+    subtitle: 'Workflow & Form Management',
     title: 'FORMA AI FITNESS APP',
     category: 'Mobile + AI',
-    date: '2024-02',
-    year: '02 / 2024',
+    date: '2026-02',
+    year: '02 / 2026',
     tags: ['REACT NATIVE', 'SUPABASE', 'PERSONALIZATION'],
     description: 'Cross-platform fitness app delivering AI-based personalized workout recommendations.',
     blurb: 'AI-guided fitness planning with adaptive recommendations.',
     technologies: ['React Native', 'Supabase', 'Firebase', 'Node.js'],
     visual: 'forma',
+    github: 'https://github.com/kailash-23/Forma.git',
+    detail: {
+      summary:
+        'FORMA is a workflow and form management system that digitizes manual internal processes, automates approvals, and standardizes organizational task handling.',
+      images: ['/images/Forma.jpeg'],
+      sections: [
+        {
+          title: 'Project Overview',
+          body:
+            'FORMA replaces paper-based workflows with a dynamic form and workflow automation layer built to streamline approvals, requests, and internal documentation.',
+        },
+        {
+          title: 'Objectives',
+          items: [
+            'Replace paper-based workflows',
+            'Automate approval pipelines',
+            'Standardize internal processes',
+            'Reduce manual errors and repeated work',
+          ],
+        },
+        {
+          title: 'Key Features',
+          items: [
+            'Dynamic form builder with custom fields and validation',
+            'Workflow automation with multi-level approvals',
+            'Conditional routing and status tracking',
+            'Submission storage with search, filtering, and export',
+            'Notification support for reminders and alerts',
+          ],
+        },
+        {
+          title: 'Workflow Example',
+          items: [
+            'User submits form',
+            'Manager approval',
+            'Admin verification',
+            'Final status update',
+          ],
+        },
+        {
+          title: 'Tech Stack',
+          items: ['ERPNext / Frappe Framework', 'Python backend logic', 'MariaDB database', 'REST APIs'],
+        },
+      ],
+    },
   },
   {
     id: 'attendance-showcase',
     displayTitle: 'AMS',
-    subtitle: 'Attendance Management Suite',
+    subtitle: 'Attendance Management',
     title: 'ATTENDANCE MANAGEMENT',
     category: 'Full Stack Product',
-    date: '2024-01',
-    year: '01 / 2024',
+    date: '2025-01',
+    year: '01 / 2025',
     tags: ['REACT', 'NODE.JS', 'POSTGRESQL'],
     description: 'Role-based attendance and CRM platform with analytics and automated reporting.',
     blurb: 'Role-based attendance, analytics, and streamlined reporting.',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'JWT'],
     visual: 'attendance',
+    github: 'https://github.com/kailash-23/AINTRIX-attendance.git',
+    detail: {
+      summary:
+        'A web-based employee attendance and tracking system developed to manage attendance, working hours, leave workflows, and employee activity inside the organization.',
+      images: ['/images/Attendance.png', '/images/attendance.jpg'],
+      sections: [
+        {
+          title: 'Project Overview',
+          body:
+            'The attendance system automates attendance capture, reduces manual logging errors, and integrates with payroll or ERP workflows to provide real-time visibility into employee presence and activity.',
+        },
+        {
+          title: 'Objectives',
+          items: [
+            'Automate attendance tracking',
+            'Reduce manual logging errors',
+            'Provide real-time attendance insights',
+            'Integrate with payroll and ERP systems',
+          ],
+        },
+        {
+          title: 'Core Features',
+          items: [
+            'Check-in and check-out system with timestamp logging',
+            'Smart tracking with IP-based and device-based validation',
+            'Attendance dashboard with monthly summaries and late/absent tracking',
+            'Leave management with approval workflow and balance tracking',
+            'Reports and analytics with CSV/PDF exports',
+          ],
+        },
+        {
+          title: 'System Workflow',
+          items: [
+            'Employee login',
+            'Check-in / Check-out',
+            'Data stored in database',
+            'Admin dashboard updates',
+            'Reports generated',
+          ],
+        },
+        {
+          title: 'Tech Stack',
+          items: ['ERPNext / Python backend', 'Web UI with JS / HTML / CSS', 'MariaDB database', 'Payroll and HR integration'],
+        },
+      ],
+    },
   },
 ]
 
@@ -134,19 +356,94 @@ const allProjects = {
       id: 'attendance',
       title: 'Attendance Management System',
       category: 'Full Stack',
-      date: '2024-01',
+      date: '2025-01',
       description:
         'A comprehensive attendance and CRM system with role-based access control, analytics dashboard, and automated reporting. Designed secure REST APIs with JWT authentication.',
       technologies: ['React', 'Node.js', 'PostgreSQL', 'JWT'],
+      github: 'https://github.com/kailash-23/AINTRIX-attendance.git',
+    },
+    {
+      id: 'qnot',
+      title: 'QNOT',
+      category: 'Real-time Systems',
+      date: '2024-02',
+      description:
+        'Real-time queue management system designed to eliminate physical waiting lines and improve user flow in service centers.',
+      technologies: ['React', 'Node.js', 'WebSockets', 'MongoDB'],
+      detail: {
+        summary:
+          'Real-time queue management system designed to eliminate physical waiting lines and improve user flow in service centers, offices, and campus facilities.',
+        images: ['/images/QNOT-app.jpeg'],
+        sections: [
+          {
+            title: 'Overview',
+            body:
+              'Digital queue system with real-time notifications. Users join remotely, receive token numbers, and get notified when their turn approaches.',
+          },
+          {
+            title: 'Objectives',
+            items: [
+              'Eliminate physical queues and crowding',
+              'Provide real-time queue tracking and position visibility',
+              'Notify users dynamically instead of forcing them to wait blindly',
+              'Optimize service efficiency and staff workflow',
+            ],
+          },
+          {
+            title: 'Core Concept',
+            body:
+              'User joins queue → System assigns token → Queue progresses → User receives notification → User arrives when turn is near',
+          },
+          {
+            title: 'Key Features',
+            items: [
+              'Digital tokens with position tracking and ETA',
+              'Real-time notifications (web, SMS, WhatsApp)',
+              'Admin dashboard with live monitoring',
+              'Multi-queue support for parallel services',
+            ],
+          },
+          {
+            title: 'Tech Stack',
+            items: [
+              'React, Node.js, WebSockets, MongoDB',
+              'Web Push APIs for notifications',
+            ],
+          },
+          {
+            title: 'Use Cases',
+            items: [
+              'Hospitals: Patients join remotely, get token, arrive just in time',
+              'Offices/Colleges: Students queue for admin services',
+              'Service Centers: Digital tokens with notifications',
+            ],
+          },
+          {
+            title: 'Challenges',
+            items: [
+              'Real-time state synchronization across concurrent users',
+              'Notification reliability despite browser limitations',
+              'Accurate ETA with dynamic service times',
+              'Scalability of real-time infrastructure',
+            ],
+          },
+          {
+            title: 'Status',
+            body:
+              'Project was paused due to college availability constraints. The catering service and associated queue requirements were moved out of scope.',
+          },
+        ],
+      },
     },
     {
       id: 'monopoly',
       title: 'Monopoly NetBanking System',
       category: 'Backend Logic',
-      date: '2023-11',
+      date: '2026-11',
       description:
         'Banking simulation platform handling transactions, account logic, and user operations. Focused on backend flow design and transaction handling.',
       technologies: ['JavaScript', 'Node.js', 'PostgreSQL'],
+      github: 'https://github.com/kailash-23/MonopolyNetBanking.git',
     },
     {
       id: 'foodicious',
@@ -161,7 +458,7 @@ const allProjects = {
       id: 'flashcards',
       title: 'Flashcards App',
       category: 'Learning Tool',
-      date: '2023-07',
+      date: '2024-07',
       description: 'Lightweight flashcard-based learning system for efficient memory retention and quick revision.',
       technologies: ['React', 'Local Storage', 'CSS'],
     },
@@ -171,7 +468,7 @@ const allProjects = {
       id: 'erpnext-ai',
       title: 'ERPNext AI Chatbot',
       category: 'Enterprise Automation',
-      date: '2024-05',
+      date: '2025-05',
       description:
         'Integrated an AI-powered chatbot within ERPNext to automate internal queries and improve operational efficiency.',
       technologies: ['ERPNext', 'Python', 'AI/NLP'],
@@ -180,7 +477,7 @@ const allProjects = {
       id: 'n8n-automation',
       title: 'n8n Lead Generation Automation',
       category: 'Workflow Automation',
-      date: '2024-04',
+      date: '2025-04',
       description:
         'Designed automation workflows for lead generation, scraping, and CRM integration, eliminating manual data collection processes.',
       technologies: ['n8n', 'APIs', 'JavaScript', 'Data Integration'],
@@ -189,10 +486,11 @@ const allProjects = {
       id: 'esp-ambilight',
       title: 'ESP Ambilight System',
       category: 'Embedded Systems',
-      date: '2023-08',
+      date: '2025-08',
       description:
         'Ambient lighting system using ESP microcontroller to synchronize lighting with screen output for immersive visuals.',
       technologies: ['ESP32', 'Arduino', 'C++', 'LED control'],
+      github: 'https://github.com/kailash-23/ambilightESP.git',
     },
   ],
   'Web & Design': [
@@ -200,24 +498,26 @@ const allProjects = {
       id: 'ryze-website',
       title: 'RYZE Website',
       category: 'Company Website',
-      date: '2024-03',
+      date: '2025-03',
       description:
         'Developed and deployed company website with focus on performance, responsiveness, and modern branding.',
       technologies: ['React', 'Tailwind CSS', 'Vercel'],
+      github: 'https://github.com/kailash-23/ryze-landing-nest.git',
     },
     {
       id: 'aintrix-website',
       title: 'Aintrix Global Website',
       category: 'Corporate Website',
-      date: '2024-02',
+      date: '2025-02',
       description: 'Built corporate website representing company services, branding, and product ecosystem.',
       technologies: ['React', 'Node.js', 'PostgreSQL'],
+      github: 'https://github.com/kailash-23/AINTRIXGLOBAL.git',
     },
     {
       id: 'aint-branding',
       title: 'AINT Branding & Design',
       category: 'Product Branding',
-      date: '2023-10',
+      date: '2025-10',
       description:
         'Worked on product branding, marketing assets, and visual design concepts for AINT startup.',
       technologies: ['Figma', 'Design Systems', 'Branding'],
@@ -228,7 +528,7 @@ const allProjects = {
       id: 'fedex-challenge',
       title: 'FedEx Innovation Challenge – IIT Madras',
       category: 'Hackathon & Recognition',
-      date: '2024-04',
+      date: '2025-04',
       description:
         'National Finalist for Sign Language Glove project, competing among top engineering teams across India.',
       technologies: ['IoT', 'ML', 'System Design'],
@@ -256,97 +556,53 @@ function formatProjectDate(dateValue) {
 }
 
 const interests = [
-  'PC hardware building',
   'Audio systems (IEMs & speaker tuning)',
   'UI/UX design',
   'Product design',
   '3D & game development',
 ]
 
-const timelineEducation = [
+const journeyTimeline = [
   {
-    period: '2021-2025',
-    title: 'B.Tech Information Technology',
-    institution: 'KCG College of Technology, Chennai',
-    description: 'Engineering degree focusing on systems architecture, software engineering, and real-world project implementation.',
-    highlights: [
-      'CGPA: 8.4/10',
-      'Core expertise: Backend systems, Databases, Cloud computing',
-      'FedEx Innovation Challenge National Finalist',
-    ],
-  },
-  {
-    period: '2019-2021',
-    title: '12th Grade (Higher Secondary)',
-    institution: 'Sri Ramakrishna Vidyalaya, Chennai',
-    description: 'Strong foundation in mathematics, physics, and problem-solving that shaped engineering fundamentals.',
-    highlights: [
-      'Scored 92% (Maths, Physics, Chemistry)',
-      'Started hands-on electronics experimentation',
-      'Built first IoT project (sensor-based automation)',
-    ],
-  },
-  {
-    period: '2015-2019',
-    title: 'School Foundation',
-    institution: 'Various institutions',
-    description: 'Early exposure to logic, problem-solving, and technology.',
-    highlights: [
-      'Participated in coding competitions',
-      'Built first embedded systems projects',
-      'Developed interest in automation and AI',
-    ],
-  },
-]
-
-const timelineWork = [
-  {
-    period: '2023-Present',
-    company: 'Aintrix Global',
-    role: 'Senior Full Stack Developer',
-    description: 'Leading backend development and automation initiatives for enterprise clients.',
+    type: 'work',
+    icon: '💼',
+    title: 'Backend Developer',
+    subtitle: 'EIT (The Golden Element)',
+    date: '2025 - 2026 (Present)',
+    latest: true,
     points: [
-      'Built and deployed 8+ production applications serving 40+ enterprise users',
-      'Architected PostgreSQL-backed systems handling 10K+ daily transactions',
-      'Integrated n8n automation workflows reducing manual operations by 40%',
-      'Implemented AI chatbot in ERPNext reducing support tickets by 30%',
+      'Backend development and automation systems',
     ],
-    highlights: {
-      achievement: 'Led platform modernization, improved system performance by 60%',
-      tech: 'Node.js, PostgreSQL, React, AWS, n8n, ERPNext',
-    },
   },
   {
-    period: '2022-2025',
-    company: 'KCG College of Technology',
-    role: 'Student Developer & Project Lead',
-    description: 'Led multiple technical initiatives and project competitions.',
+    type: 'work',
+    icon: '💼',
+    title: 'Full Stack Developer',
+    subtitle: 'Aintrix Global Pvt Ltd',
+    date: '2024 - 2025',
     points: [
-      'Sign Language Glove Project - National Finalist at FedEx Innovation Challenge',
-      'Achieved 90%+ gesture recognition accuracy using ML',
-      'Built full-stack IoT and web applications for hackathons',
-      'Mentored junior students in web development and systems design',
+      'Full-stack development and system implementation',
     ],
-    highlights: {
-      achievement: 'FedEx Innovation Challenge National Finalist (2024)',
-      tech: 'Python, Arduino, ML, React, Node.js',
-    },
   },
   {
-    period: '2021-2022',
-    company: 'Freelance',
-    role: 'Full Stack Developer',
-    description: 'Built multiple web applications and automation solutions.',
+    type: 'education',
+    icon: '🎓',
+    title: 'B.E Computer Science Engineering',
+    subtitle: 'KCG College of Technology, Chennai',
+    date: '2023 - 2027',
     points: [
-      'Developed 5+ production web applications',
-      'Designed custom REST APIs and database schemas',
-      'Implemented real-time features using Firebase',
-      'Delivered projects on responsive React and Vue frameworks',
+      'Computer Science Engineering',
     ],
-    highlights: {
-      achievement: 'Built complete e-commerce platform MVP in 3 months',
-      tech: 'React, Node.js, Firebase, PostgreSQL',
-    },
+  },
+  {
+    type: 'education',
+    icon: '🎓',
+    title: 'Higher Secondary (12th Grade)',
+    subtitle: 'Gill Adarsh Matric Hr Sec School, Chennai',
+    date: '2023',
+    points: [
+      'School education',
+    ],
   },
 ]
 
@@ -407,6 +663,7 @@ function App() {
   const [selectedProject, setSelectedProject] = useState(null)
   const heroRef = useRef(null)
   const lastScrollY = useRef(0)
+  const scrollRaf = useRef(0)
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode)
@@ -437,6 +694,13 @@ function App() {
     description: project.description,
     technologies: project.technologies,
     date: project.date,
+    year: project.year,
+    displayTitle: project.displayTitle,
+    subtitle: project.subtitle,
+    blurb: project.blurb,
+    visual: project.visual,
+    github: project.github,
+    detail: project.detail,
   }))
 
   const mergedProjects = [...showcaseArchiveProjects, ...archiveProjects]
@@ -446,10 +710,11 @@ function App() {
   const sortedProjects = uniqueProjects.sort((a, b) => (b.date || '').localeCompare(a.date || ''))
 
   useEffect(() => {
-    const onScroll = () => {
+    const updateNavVisibility = () => {
+      scrollRaf.current = 0
+
       const currentY = window.scrollY
 
-      // Keep nav visible near top for better orientation.
       if (currentY < 32) {
         setShowNav(true)
         lastScrollY.current = currentY
@@ -465,8 +730,21 @@ function App() {
       lastScrollY.current = currentY
     }
 
+    const onScroll = () => {
+      if (scrollRaf.current) {
+        return
+      }
+
+      scrollRaf.current = window.requestAnimationFrame(updateNavVisibility)
+    }
+
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (scrollRaf.current) {
+        window.cancelAnimationFrame(scrollRaf.current)
+      }
+    }
   }, [])
 
   if (isProjectsPage) {
@@ -479,6 +757,10 @@ function App() {
               <h1 className="projects-editorial-title m-0!">ALL PROJECTS</h1>
               <a
                 href="/"
+                onClick={(event) => {
+                  event.preventDefault()
+                  window.location.assign('/')
+                }}
                 className="rounded-full border border-(--line) bg-(--card) px-5 py-2 text-sm font-semibold text-(--text-primary) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-white"
               >
                 Back to Home
@@ -576,7 +858,8 @@ function App() {
           <div className="hero-grid hero-grid--single">
             <div className="hero-content">
               <h1 className="hero-title hero-name-animate">
-                <span className="hero-name-line">Kailash Senthil</span>
+                <span className="hero-name-line">Kailash</span>
+                <span className="hero-name-line hero-name-line--second">Senthil</span>
               </h1>
               <p className="hero-copy">
                 Building backend and automation systems with product-level reliability,
@@ -586,16 +869,30 @@ function App() {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
                   href="mailto:kailash.s2376@gmail.com"
-                  className="rounded-full border border-(--line) bg-(--card) px-5 py-2 text-sm font-semibold text-(--text-primary) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-white hover:shadow-lg"
+                  className="hidden rounded-full border border-(--line) bg-(--card) px-5 py-2 text-sm font-semibold text-(--text-primary) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-white hover:shadow-lg md:inline-flex"
                 >
                   Let us connect
                 </a>
                 <a
                   href="#all-projects"
-                  className="rounded-full border border-(--line) bg-transparent px-5 py-2 text-sm font-semibold text-(--text-soft) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-(--text-white) hover:shadow-lg"
+                  className="hidden rounded-full border border-(--line) bg-transparent px-5 py-2 text-sm font-semibold text-(--text-soft) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-(--text-white) hover:shadow-lg md:inline-flex"
                 >
                   View projects
                 </a>
+              </div>
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-2 md:hidden">
+                {socialLinks.map((item) => (
+                  <IconButton
+                    key={item.label}
+                    href={item.href}
+                    target={item.href.startsWith('mailto:') ? undefined : '_blank'}
+                    rel={item.href.startsWith('mailto:') ? undefined : 'noreferrer'}
+                    label={item.label}
+                    compact
+                  >
+                    {item.icon}
+                  </IconButton>
+                ))}
               </div>
             </div>
           </div>
@@ -626,51 +923,32 @@ function App() {
           className="unified-section"
         >
           <SectionTitle title="Journey Timeline" showDecoration={false} />
-          <div className="timeline-layout">
-            <div className="timeline-column">
-              <h3 className="timeline-column-title">Education</h3>
-              <div className="timeline-stack">
-                {timelineEducation.map((item) => (
-                  <article key={item.title} className="timeline-card">
-                    <p className="timeline-card-period">{item.period}</p>
-                    <p className="timeline-card-title">{item.title}</p>
-                    {item.institution && <p className="timeline-card-sub">{item.institution}</p>}
-                    <p className="timeline-card-copy">{item.description}</p>
-                    {item.highlights && (
-                      <ul className="timeline-card-list">
-                        {item.highlights.map((highlight, i) => (
-                          <li key={i}>{highlight}</li>
-                        ))}
-                      </ul>
-                    )}
-                  </article>
-                ))}
-              </div>
-            </div>
-
-            <div className="timeline-column">
-              <h3 className="timeline-column-title">Work Experience</h3>
-              <div className="timeline-stack">
-                {timelineWork.map((item) => (
-                  <article key={item.company} className="timeline-card">
-                    <p className="timeline-card-period">{item.period}</p>
-                    <p className="timeline-card-title">
-                      {item.company} · {item.role}
-                    </p>
-                    {item.description && <p className="timeline-card-sub">{item.description}</p>}
-                    {Array.isArray(item.points) ? (
-                      <ul className="timeline-card-list">
-                        {item.points.map((point, i) => (
-                          <li key={i}>{point}</li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className="timeline-card-copy">{item.points}</p>
-                    )}
-                  </article>
-                ))}
-              </div>
-            </div>
+          <div className="journey-timeline">
+            <div className="journey-line" aria-hidden="true" />
+            {journeyTimeline.map((item, index) => (
+              <motion.article
+                key={`${item.title}-${item.date}`}
+                initial={{ opacity: 0, y: 24, x: index % 2 === 0 ? -24 : 24 }}
+                whileInView={{ opacity: 1, y: 0, x: 0 }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.45, ease: 'easeOut' }}
+                className={`journey-item ${index % 2 === 0 ? 'journey-item-left' : 'journey-item-right'} ${item.latest ? 'journey-item-latest' : ''}`}
+              >
+                <div className="journey-node" aria-hidden="true">
+                  <span>{item.icon}</span>
+                </div>
+                <div className="journey-card">
+                  <p className="journey-date">{item.date}</p>
+                  <h3 className="journey-title">{item.title}</h3>
+                  <p className="journey-subtitle">{item.subtitle}</p>
+                  <ul className="journey-points">
+                    {item.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.article>
+            ))}
           </div>
         </MotionSection>
 
@@ -705,9 +983,7 @@ function App() {
                     }
                   }}
                 >
-                  <div className={`editorial-project-visual visual-${project.visual}`} aria-hidden="true">
-                    <div className="editorial-mock-window" />
-                  </div>
+                  <div className={`editorial-project-visual visual-${project.visual}`} aria-hidden="true" />
 
                   <div className="editorial-project-head">
                     <h3>{project.displayTitle || project.title}</h3>
