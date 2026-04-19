@@ -753,18 +753,21 @@ function App() {
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(24,28,34,0.12),transparent_42%),radial-gradient(circle_at_80%_0%,rgba(64,72,86,0.08),transparent_34%),linear-gradient(to_bottom,var(--bg),var(--bg))]" />
         <main className="projects-page-shell mx-auto flex w-full max-w-7xl flex-col px-4 pb-24 pt-12 md:px-6 lg:px-8 md:pt-16">
           <section className="unified-section">
-            <div className="projects-page-header flex flex-wrap items-center justify-between gap-4">
-              <h1 className="projects-editorial-title m-0!">ALL PROJECTS</h1>
+            <div className="projects-page-header flex flex-wrap items-center gap-4">
               <a
                 href="/"
                 onClick={(event) => {
                   event.preventDefault()
                   window.location.assign('/')
                 }}
-                className="back-home-btn rounded-full border border-(--line) bg-(--card) px-5 py-2 text-sm font-semibold text-(--text-primary) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-white"
+                aria-label="Back to home"
+                className="back-home-btn group inline-flex h-10 w-10 items-center justify-center rounded-full border border-(--line) bg-(--card) text-(--text-primary) transition-all duration-300 hover:border-(--text-primary) hover:bg-(--text-primary) hover:text-white"
               >
-                Back to Home
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" aria-hidden="true">
+                  <path d="M14.5 5.5 8 12l6.5 6.5 1.4-1.4L11.2 12l4.7-5.1z" />
+                </svg>
               </a>
+              <h1 className="projects-editorial-title m-0!">ALL PROJECTS</h1>
             </div>
             <p className="mt-4 text-sm uppercase tracking-[0.08em] text-(--text-muted)">
               Sorted by most recent first
@@ -858,8 +861,7 @@ function App() {
           <div className="hero-grid hero-grid--single">
             <div className="hero-content">
               <h1 className="hero-title hero-name-animate">
-                <span className="hero-name-line">Kailash</span>
-                <span className="hero-name-line hero-name-line--second">Senthil</span>
+                <span className="hero-name-line">Kailash Senthil</span>
               </h1>
               <p className="hero-copy">
                 Building backend and automation systems with product-level reliability,

@@ -135,10 +135,10 @@ a {
 .hero-title {
   margin: 0;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2.7rem, 6.2vw, 6.4rem);
-  line-height: 0.96;
-  letter-spacing: -0.03em;
-  font-weight: 700;
+  font-size: clamp(3.4rem, 8.2vw, 8.8rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-weight: 800;
   white-space: nowrap;
 }
 
@@ -150,12 +150,8 @@ a {
 .hero-name-line {
   display: inline-block;
   width: fit-content;
-  background: linear-gradient(90deg, var(--text-primary), color-mix(in srgb, var(--text-primary) 68%, white 32%), var(--text-primary));
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: hero-name-shimmer 8s linear infinite, hero-name-rise 0.62s ease both;
+  color: var(--text-primary);
+  animation: hero-name-rise 0.62s ease both;
 }
 
 .hero-name-line--offset {
@@ -1259,13 +1255,20 @@ a {
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: clamp(2.4rem, 12vw, 3.2rem);
+    font-size: clamp(1.9rem, 9.6vw, 2.6rem);
     line-height: 0.92;
     white-space: normal;
   }
 
   .hero-name-animate {
     justify-items: center;
+  }
+
+  .hero-name-line {
+    max-width: 8.8ch;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 
   .hero-copy {
