@@ -749,11 +749,11 @@ function App() {
 
   if (isProjectsPage) {
     return (
-      <div className="relative min-h-screen overflow-x-hidden bg-(--bg) text-(--text-primary)">
+      <div className="projects-page relative min-h-screen overflow-x-hidden bg-(--bg) text-(--text-primary)">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(24,28,34,0.12),transparent_42%),radial-gradient(circle_at_80%_0%,rgba(64,72,86,0.08),transparent_34%),linear-gradient(to_bottom,var(--bg),var(--bg))]" />
-        <main className="mx-auto flex w-full max-w-7xl flex-col px-4 pb-24 pt-12 md:px-6 lg:px-8 md:pt-16">
+        <main className="projects-page-shell mx-auto flex w-full max-w-7xl flex-col px-4 pb-24 pt-12 md:px-6 lg:px-8 md:pt-16">
           <section className="unified-section">
-            <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="projects-page-header flex flex-wrap items-center justify-between gap-4">
               <h1 className="projects-editorial-title m-0!">ALL PROJECTS</h1>
               <a
                 href="/"
@@ -761,7 +761,7 @@ function App() {
                   event.preventDefault()
                   window.location.assign('/')
                 }}
-                className="rounded-full border border-(--line) bg-(--card) px-5 py-2 text-sm font-semibold text-(--text-primary) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-white"
+                className="back-home-btn rounded-full border border-(--line) bg-(--card) px-5 py-2 text-sm font-semibold text-(--text-primary) transition-all duration-300 hover:border-(--accent) hover:bg-(--accent) hover:text-white"
               >
                 Back to Home
               </a>
@@ -769,7 +769,7 @@ function App() {
             <p className="mt-4 text-sm uppercase tracking-[0.08em] text-(--text-muted)">
               Sorted by most recent first
             </p>
-            <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className="projects-page-grid mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {sortedProjects.map((project, index) => (
                 <div key={`${project.id}-${index}`} className="relative">
                   <span className="absolute right-4 top-4 z-20 text-xs font-semibold tracking-[0.08em] text-(--text-muted)">
