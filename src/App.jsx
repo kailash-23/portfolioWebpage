@@ -4,6 +4,7 @@ import SectionTitle from './components/SectionTitle'
 import GridProjectCard from './components/GridProjectCard'
 import ProjectModal from './components/ProjectModal'
 import ResumeButton from './components/ResumeButton'
+import GitHubContributions from './components/GitHubContributions'
 
 function IconButton({ label, children, compact = false, ...props }) {
   return (
@@ -1033,6 +1034,20 @@ function App() {
               </div>
             </div>
           </div>
+        </MotionSection>
+
+        <MotionSection
+          id="github-contributions"
+          variants={sectionAnim}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="unified-section"
+        >
+          <p className="mb-3 text-[0.62rem] font-semibold tracking-[0.12em] uppercase text-(--text-muted) opacity-65">
+            GitHub Contributions
+          </p>
+          <GitHubContributions />
         </MotionSection>
 
         <MotionSection
