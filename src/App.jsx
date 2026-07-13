@@ -635,7 +635,7 @@ const socialLinks = [
   },
   {
     label: 'LeetCode',
-    href: 'https://leetcode.com/kailash-23/',
+    href: 'https://leetcode.com/u/kailashsenthil/',
     icon: <LeetcodeIcon />,
   },
   {
